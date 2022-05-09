@@ -4,7 +4,7 @@ const {bullTypeInDb} = require('../controllers/controlls')
 
 router.get('/',async(req,res)=>{
     try{
-        res.status(200).send(await bullTypeInDb())
+        res.status(200).json(await bullTypeInDb())
     }catch(err){
         res.status(404).send({msg: 'algo hiciste mal.'})
     }

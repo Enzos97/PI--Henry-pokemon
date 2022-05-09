@@ -1,0 +1,19 @@
+.div{
+    text-decoration: none;
+    display: flex;
+    width:100vw;
+    height:100vh; 
+    background: url(../img/pokeballLP1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-size: contain; */
+    flex-direction: column;  
+    align-content: center;
+    justify-content: center;
+}
+.h1{
+    color: black;
+    text-shadow: 1px 0 0 #fff, -1px 0 0 #fff,
+   0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px 0 #fff, -1px -1px 0 #fff,
+   -1px 1px 0 #fff, 1px -1px 0 #fff;
+}

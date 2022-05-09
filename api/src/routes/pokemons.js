@@ -1,16 +1,16 @@
 const { Router, json } = require('express')
 const { Pokemon } = require('../db.js')
 const router= Router()
-const {allCharacters, charactersById, createCharacter, charactersByNameInDbOrApi}= require('../controllers/controlls')
+const {getallCharacters, charactersById, createCharacter, charactersByNameInDbOrApi}= require('../controllers/controlls')
 router.use(json())
 
 router.get('/', async (req,res)=>{
-    let {name} = req.query
-    if(!name) return res.status(201).json(await allCharacters())
     try{
+        let {name} = req.query
+        if(!name) return res.status(201).json(await getallCharacters())
         res.status(200).json(await charactersByNameInDbOrApi(name))
     }catch(err){
-        res.status(404).send(err.message)
+        res.status(404).json(err.message)
     }
 })
 
@@ -19,7 +19,7 @@ router.get('/:id', async (req,res)=>{
         let {id} = req.params
         res.send(await charactersById(id))
     }catch(err){
-        res.send(err.message)
+        res.status(404).json(err.message)
     }
 })
 

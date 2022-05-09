@@ -3,7 +3,7 @@ const { Pokemon, Type } = require('../db');
 
 async function charactersByNameInApi(value){
     try{
-        const charaterPrueba = await axios.get(`https://pokeapi.co/api/v2/pokemon/${value}`)
+        const charaterPrueba = await axios.get(`https://pokeapi.co/api/v2/pokemon/${value.toLowerCase().trim()}`)
         const characterValue = {
             id:charaterPrueba.data.id,
             name:charaterPrueba.data.name,
@@ -24,7 +24,7 @@ async function charactersByNameInApi(value){
 
 async function charactersByNameInDbOrApi(name){
     let findNameInDb = await Pokemon.findAll({
-        where:{name:name.toLowerCase()},
+        where:{name:name.toLowerCase().trim()},
         attributes:["id","name","hp","attack","defense","speed","height","weight","img",],
         include:{
             model: Type,
@@ -46,7 +46,7 @@ async function charactersByNameInDbOrApi(name){
     return findNameInDb[0]
 }
 
-async function allCharacters(){
+async function getallCharacters(){
     //const llamadaApiLimit = await axios("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=40")
     const primerllamadaApiLimit = await axios.get("https://pokeapi.co/api/v2/pokemon")
     const pokemonsLLamados1 = await primerllamadaApiLimit.data.results.map(m=>{return axios.get(m.url)})
@@ -63,12 +63,13 @@ async function allCharacters(){
                 id: p.data.id,
                 name: p.data.name,
                 img: p.data.sprites.other.dream_world.front_default,
+                attack: p.data.stats[1].base_stat,
                 types: p.data.types.map(m=>m.type.name),
               }
     })
 
     let llamadaDataDb = await Pokemon.findAll({
-        attributes:['name','img','id'],
+        attributes:['name','img','id','isInDataBase','attack'],
         include:{
             model: Type,
             attributes: ['name'],
@@ -116,7 +117,7 @@ async function charactersById(value){
 }
 
 async function findCharacterInApi(name){
-        let callApi = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
+        let callApi = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase().trim()}`)
             .catch(()=>{ return false})
         if(callApi)return true
 }
@@ -124,12 +125,12 @@ async function findCharacterInApi(name){
 async function createCharacter(name,height,hp,attack,defense,speed,weight,types,img,isInDataBase){
     if(name){
         let findDB = await Pokemon.findOne({
-                where: {name: name.toLowerCase()}
+                where: {name: name.toLowerCase().trim()}
             })
-        if(await findCharacterInApi(name))throw new Error ('El pokemon que intenta crear ya existe')
-        else if(findDB) throw new Error ('El pokemon que intenta crear ya existe')
+        if(await findCharacterInApi(name)) return '404'
+        else if(findDB) return '404'
         else {let pokemonCreate= await Pokemon.create({
-            name: name.toLowerCase(),
+            name: name.toLowerCase().trim(),
             height:height,
             hp:hp,
             attack:attack,
@@ -157,14 +158,15 @@ async function bullTypeInDb(){
     let typeInDb = await Type.findAll()
     
     if(typeInDb.length===0){
-        console.log('helloooo')
+        
         let llamadoALaApi = await axios.get('https://pokeapi.co/api/v2/type');
         let typeInApi = llamadoALaApi.data.results.map(t =>{return {name: t.name}});
         typeInDb = await Type.bulkCreate(typeInApi)
-    }
 
+    }
     return typeInDb
 }
+
 // let llamadoALaApi = await axios.get('https://pokeapi.co/api/v2/type');
 // var typeInDb=[];
 // for (let pokemonT = 0; pokemonT < llamadoALaApi.data.results.length; pokemonT++) {
@@ -173,20 +175,9 @@ async function bullTypeInDb(){
 // }
 // return typeInDb
     
-    //console.log(bullTypeInDb())
-    //bullTypeInDb().then(val=> console.log(val))
-    
-    //for(let pokemosT of llamadoALaApi.data.results){
-    //}
-    // llamadoALaApi.data.results.map(async t =>{ 
-    //     const [types] = await Type.findOrCreate({where:{name: t.name}})
-    //     typeInDb.push(types)
-    // })
-    // console.log(typeInDb.length)
-    // return typeInDb
 module.exports = {
     charactersByNameInApi,
-    allCharacters,
+    getallCharacters,
     charactersById,
     createCharacter,
     bullTypeInDb,

@@ -15,31 +15,24 @@ module.exports = (sequelize) => {
     },
     height:{
       type: DataTypes.INTEGER,
-      allowNull: true,
     },
     hp:{
       type: DataTypes.INTEGER,
-      allowNull: true,
     },
     attack:{
       type: DataTypes.INTEGER,
-      allowNull: true,
     },
     defense:{
       type: DataTypes.INTEGER,
-      allowNull: true,
     },
     speed:{
       type: DataTypes.INTEGER,
-      allowNull: true,
     },
     weight:{
       type: DataTypes.INTEGER,
-      allowNull: true,
     },
     img:{
       type: DataTypes.STRING,
-      allowNull: true,
     },
     isInDataBase:{
       type:DataTypes.BOOLEAN,
