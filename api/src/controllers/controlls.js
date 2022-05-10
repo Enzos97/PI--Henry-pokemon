@@ -18,7 +18,7 @@ async function charactersByNameInApi(value){
         }
         return characterValue
     }catch(err){
-        throw new Error('El Pokemon no existe')
+        throw new Error(`The pokemon doesn't exist`)
     }
 }
 
@@ -69,7 +69,7 @@ async function getallCharacters(){
     })
 
     let llamadaDataDb = await Pokemon.findAll({
-        attributes:['name','img','id','isInDataBase','attack'],
+        attributes:['name','img','id','InDB','attack'],
         include:{
             model: Type,
             attributes: ['name'],
@@ -91,7 +91,7 @@ async function getallCharacters(){
 }
 
 async function charactersById(value){
-    if(value.length>10){
+    if(value.length>5){
         try{
             const findDbID= await Pokemon.findByPk(value, {include:Type})
             const detailOfPoquemonInDb = {
@@ -105,11 +105,11 @@ async function charactersById(value){
                 weight: findDbID.weight,
                 types: findDbID.types.map(m=>m.name),
                 img: findDbID.img,
-                isInDataBase:findDbID.isInDataBase
+                InDB:findDbID.InDB
             }
             return detailOfPoquemonInDb
         }catch(err){
-            throw new Error('El Pokemon no existe')
+            throw new Error(`The pokemon doesn't exist`)
         }
     }else{ 
         return charactersByNameInApi(value)
@@ -122,13 +122,13 @@ async function findCharacterInApi(name){
         if(callApi)return true
 }
 
-async function createCharacter(name,height,hp,attack,defense,speed,weight,types,img,isInDataBase){
+async function createCharacter(name,height,hp,attack,defense,speed,weight,types,img,InDB){
     if(name){
         let findDB = await Pokemon.findOne({
                 where: {name: name.toLowerCase().trim()}
             })
-        if(await findCharacterInApi(name)) return '404'
-        else if(findDB) return '404'
+        if(await findCharacterInApi(name)) throw new Error('the pokemon already exists...')
+        else if(findDB) throw new Error('the pokemon already exists...')
         else {let pokemonCreate= await Pokemon.create({
             name: name.toLowerCase().trim(),
             height:height,
@@ -138,7 +138,7 @@ async function createCharacter(name,height,hp,attack,defense,speed,weight,types,
             speed: speed,
             weight: weight,
             img: img,
-            isInDataBase:isInDataBase
+            InDB:InDB
         })
         
         let typesDb = await Type.findAll({
@@ -147,10 +147,10 @@ async function createCharacter(name,height,hp,attack,defense,speed,weight,types,
         
         pokemonCreate.addType(typesDb)
         
-        return 'Pokemon creado correctamente'
+        return 'Pokemon created successfully'
     }
     }else{
-        return 'Debe ingesar un nombre'
+        return 'You must enter a name'
     }
 }
 
@@ -166,7 +166,6 @@ async function bullTypeInDb(){
     }
     return typeInDb
 }
-
 // let llamadoALaApi = await axios.get('https://pokeapi.co/api/v2/type');
 // var typeInDb=[];
 // for (let pokemonT = 0; pokemonT < llamadoALaApi.data.results.length; pokemonT++) {

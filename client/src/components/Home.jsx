@@ -9,7 +9,6 @@ import Paginated from './Paginated';
 import { filterCrated, getTypes, orderName, orderAttack } from './../actions/index';
 import SearchBar from './SearchBar';
 import pokeicon from '../img/pokeicon.png'
-import dinoErr from '../img/Dino-Err.jpg'
 import loadingGif from '../img/pikachu.gif'
 
 export default function Home(){
@@ -39,10 +38,6 @@ export default function Home(){
         dispatch(getCharacters())
         setCurrent(1)
     }
-    // function handleTypes(e){
-    //     e.preventDefault();
-    //     dispatch(getTypes())
-    // }
     function handleSortName(e){
         e.preventDefault();
         dispatch(orderName(e.target.value))
@@ -71,8 +66,6 @@ export default function Home(){
             <div className={style.contenedor1}>
                 <div className={style.homeBar}>
                     <Link className={style.linkH1} to='/'><h1 className={style.h1h}>Home</h1></Link>
-                {/* <button className={style.btn} onClick={e=>{handleClick(e)}}>jajaja */}
-                {/* </button> */}
                     <button className={style.btnImg} onClick={e=>{handleClick(e)}}>
                         <img className={style.img} src={pokeicon} alt="" width="220em" height="95em" />
                     </button>
@@ -80,7 +73,7 @@ export default function Home(){
                 </div>
                 <div className={style.divSelectorYbar}>
                     <div className={style.searchbar}>
-                        <SearchBar/>
+                        <SearchBar setCurrent={setCurrent}/>
                      </div>
                     <div className={style.divSelector}>
                     <label className={style.labels}>Order Pokemons: 
@@ -129,7 +122,7 @@ export default function Home(){
                         currentCharacters.length!==0?currentCharacters.map(m=>{
                             return(
                                 <Link key={m.id} to={'/Details/'+m.id} className={style.link}>
-                                <Card name={m.name} img={m.img?m.img:<img src={dinoErr}/>} types={m.types} />
+                                <Card name={m.name} img={m.img} types={m.types} />
                             </Link>
                             )
                         }):

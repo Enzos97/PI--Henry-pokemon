@@ -5,6 +5,7 @@ import { clearPage, getDetail} from "../actions";
 import { useEffect } from "react";
 import style from '../styles/Details.module.css'
 import loadingGif from '../img/pikachu.gif'
+import dinoErr from '../img/Dino-Err.jpg'
 
 export default function Detail(props){
     console.log(props)
@@ -25,7 +26,7 @@ return(
             <div className={style.div1}>
                     <h1 className={style.h1}>{characterDetail.name.toUpperCase()}</h1>
                 <div className={style.div2}>
-                    <img src={characterDetail.img?characterDetail.img:'Image no found...'} alt="" width="150em" height="200em" />
+                    <img src={characterDetail.img?characterDetail.img:dinoErr} alt="" width="150em" height="200em" />
                     <div className={style.div3}>
                         <p>Hp: {characterDetail.hp}</p>
                         <p>Attack: {characterDetail.attack}</p>

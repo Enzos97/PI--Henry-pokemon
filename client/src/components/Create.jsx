@@ -29,6 +29,14 @@ export default function CreatePokemon(){
         let errors = {};
         const ReName = new RegExp(/^[A-Za-z\s]+$/g)
         const ReUrl = new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/);
+
+        // for(let values in input ){
+        //     if(values.length?)
+        //     if(values!=='name' && values!=='img' && values!=='types' ){
+        //         input[values]=0
+        //     }
+        // }
+
         if(pokemons.find(f=>f.name===input.name.toLowerCase())){
             errors.name = 'The pokemon you are trying to create already exists'
         }
@@ -38,29 +46,29 @@ export default function CreatePokemon(){
         if (!input.name){
             errors.name = 'A name is required'
         }
-        if (input.hp < 1) {
-            errors.hp = 'Must be greater than 1'
+        if (input.hp.length?input.hp< 0:input.hp=0) {
+            errors.hp = 'Must be greater than 0'
         }
-        if (input.attack < 1) {
-            errors.attack = 'Must be greater than 1'
+        if (input.attack.length?input.attack< 0:input.attack=0) {
+            errors.attack = 'Must be greater than 0'
         }
-        if (input.defense < 1 ) {
-            errors.defense = 'Must be greater than 1'
+        if (input.defense.length?input.defense< 0:input.defense=0) {
+            errors.defense = 'Must be greater than 0'
         }
-        if (input.speed < 1) {
-            errors.speed = 'Must be greater than 1'
+        if (input.speed.length?input.speed< 0:input.speed=0) {
+            errors.speed = 'Must be greater than 0'
         }
-        if (input.weight < 1 ) {
-            errors.weight = 'Must be greater than 1'
+        if (input.weight.length?input.weight< 0:input.weight=0) {
+            errors.weight = 'Must be greater than 0'
         }
-        if (input.height < 1) {
-            errors.height = 'Must be greater than 1'
+        if (input.height.length?input.height< 0:input.height=0) {
+            errors.height = 'Must be greater than 0'
         }
         if (input.types.length > 2){
             errors.types = 'You cannot choose more than two types'
         }
         if (input.types.length < 1){
-            errors.types = 'You must choose at least one type...'
+             errors.types = 'You must choose at least one type...'
         }
         if(input.img.length&&!ReUrl.test(input.img)){
             errors.img = 'Enter a valid url'

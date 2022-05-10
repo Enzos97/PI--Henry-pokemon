@@ -21,16 +21,10 @@ export function getCharacters(){
     }
 }
 export function getDetail(id){
-    return async function (dispatch){
-        try{
-            let json = await axios.get(`http://localhost:3001/api/pokemons/${id}`)
-            return dispatch({
-                type: 'GET_DETAIL',
-                payload: json.data
-            })
-        }catch(err){
-            window.alert(err.response.data)
-        }
+    return (dispatch)=>{
+            axios.get(`http://localhost:3001/api/pokemons/${id}`)
+                .then((json) => dispatch({type: 'GET_DETAIL', payload:json.data}))
+                .catch((err)=>{window.alert(err.response.data)})
     }
 }
 export function getTypes(){
@@ -47,13 +41,10 @@ export function getTypes(){
     }
 }
 export function postPokemon(payload){
-    return async function(dispatch){
-        try{
-            let json = await axios.post('http://localhost:3001/api/pokemons/',payload)
-            return json
-        }catch(err){
-            window.alert(err.response.data)
-        }
+    return function(dispatch){
+            axios.post('http://localhost:3001/api/pokemons/',payload)
+            .then((json)=>dispatch({type:'POST_POKEMON', payload:json}))
+            .catch((err)=>{window.alert(err.response.data)})
     }
 }
 export function orderName(payload){

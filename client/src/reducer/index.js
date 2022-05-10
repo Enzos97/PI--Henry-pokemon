@@ -1,4 +1,4 @@
-import {GET_CHARACTERS, FILTER, GET_DETAIL, FILTER_CREATED, ORDER_NAME, SEARCH_BY_NAME, ORDER_ATTACK, POST_POKEMON, CLEAR_PAGE, MESSAGE} from "../actions"
+import {GET_CHARACTERS, FILTER, GET_DETAIL, FILTER_CREATED, ORDER_NAME, SEARCH_BY_NAME, ORDER_ATTACK, POST_POKEMON, CLEAR_PAGE} from "../actions"
 import { GET_TYPES } from './../actions/index';
 
 const initialState = {
@@ -52,7 +52,7 @@ const rootReducer = (state= initialState,action)=>{
         }
         case FILTER_CREATED:
             const pokemonsFilter1 = state.allCharacter
-            const cratedFilter = action.payload === 'created'? pokemonsFilter1.filter(el=> el.isInDataBase):pokemonsFilter1.filter(el=>!el.isInDataBase)
+            const cratedFilter = action.payload === 'created'? pokemonsFilter1.filter(el=> el.InDB):pokemonsFilter1.filter(el=>!el.InDB)
             return{
                 ...state,
                 characters:action.payload==='all'?pokemonsFilter1:cratedFilter

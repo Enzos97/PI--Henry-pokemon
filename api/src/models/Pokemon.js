@@ -34,7 +34,7 @@ module.exports = (sequelize) => {
     img:{
       type: DataTypes.STRING,
     },
-    isInDataBase:{
+    InDB:{
       type:DataTypes.BOOLEAN,
       defaultValue: true,
     }

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchByName } from "../actions";
 
-export default function SearchBar (){
+export default function SearchBar ({setCurrent}){
     const dispatch = useDispatch()
     const [name,setName] = useState("")
     
@@ -16,6 +16,7 @@ export default function SearchBar (){
         e.preventDefault()
         dispatch(searchByName(name))
         setName("")
+        setCurrent(1)
     }
     
     return(
