@@ -122,7 +122,7 @@ export default function Home(){
                         currentCharacters.length!==0?currentCharacters.map(m=>{
                             return(
                                 <Link key={m.id} to={'/Details/'+m.id} className={style.link}>
-                                <Card name={m.name} img={m.img} types={m.types} />
+                                <Card name={m.name} img={m.img} types={m.types} id={m.id} />
                             </Link>
                             )
                         }):

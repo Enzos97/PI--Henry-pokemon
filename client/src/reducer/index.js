@@ -1,5 +1,5 @@
 import {GET_CHARACTERS, FILTER, GET_DETAIL, FILTER_CREATED, ORDER_NAME, SEARCH_BY_NAME, ORDER_ATTACK, POST_POKEMON, CLEAR_PAGE} from "../actions"
-import { GET_TYPES } from './../actions/index';
+import { GET_TYPES,  } from './../actions/index';
 
 const initialState = {
     characters : [],
@@ -78,6 +78,10 @@ const rootReducer = (state= initialState,action)=>{
             ...state,
             detail:{}
         }
+        // case GET_TYPES_IN_PAGE: return{
+        //     ...state,
+
+        // }
     default: return{...state}
     }
 }

@@ -16,7 +16,6 @@ export default function SearchBar ({setCurrent}){
         e.preventDefault()
         dispatch(searchByName(name))
         setName("")
-        setCurrent(1)
     }
     
     return(

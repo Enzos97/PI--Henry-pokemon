@@ -30,13 +30,6 @@ export default function CreatePokemon(){
         const ReName = new RegExp(/^[A-Za-z\s]+$/g)
         const ReUrl = new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/);
 
-        // for(let values in input ){
-        //     if(values.length?)
-        //     if(values!=='name' && values!=='img' && values!=='types' ){
-        //         input[values]=0
-        //     }
-        // }
-
         if(pokemons.find(f=>f.name===input.name.toLowerCase())){
             errors.name = 'The pokemon you are trying to create already exists'
         }
@@ -107,7 +100,6 @@ export default function CreatePokemon(){
     console.log('pokes',pokemons)
     function handleSubmit(e){
         e.preventDefault()
-        console.log('find',pokemons.find((f)=>f.name===input.name.toLowerCase()))
         if(Object.keys(errors).length===0){
                 dispatch(postPokemon(input))
                 setInput({

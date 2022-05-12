@@ -3,6 +3,7 @@ import style from '../styles/Card.module.css'
 import dinoErr from '../img/Dino-Err.jpg'
 
 export default function Card ({name,img,types,id}){
+
     return(
         <div className={style.div} key={id}>
             <h3 className={style.h3}>{name.toUpperCase()}</h3>

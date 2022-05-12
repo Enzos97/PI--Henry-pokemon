@@ -12,9 +12,9 @@ export default function Detail(props){
     const dispatch = useDispatch()
 useEffect(()=>{
     dispatch(getDetail(props.match.params.id))
-    return()=>{
+    return( ()=>{
         dispatch(clearPage())
-    }
+    })
     //eslint-disable-next-line
 },[dispatch])
 const characterDetail = useSelector((state)=>state.detail)

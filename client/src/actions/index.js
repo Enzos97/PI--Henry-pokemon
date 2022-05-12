@@ -9,7 +9,7 @@ export const SEARCH_BY_NAME = 'SEARCH_BY_NAME'
 export const ORDER_ATTACK = 'ORDER_ATTACK'
 export const POST_POKEMON = 'POST_POKEMON'
 export const CLEAR_PAGE = 'CLEAR_PAGE'
-export const MESSAGE = 'MESSAGE'
+
 
 export function getCharacters(){
     return async function(dispach){
@@ -87,6 +87,7 @@ export function searchByName(name){
         }
     }
 }
+
 export function clearPage(){
     return{
         type:'CLEAR_PAGE'
