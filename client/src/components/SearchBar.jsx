@@ -7,7 +7,7 @@ import style from "../styles/Search.module.css"
 export default function SearchBar ({setCurrent}){
     const dispatch = useDispatch()
     const [name,setName] = useState("")
-    
+
     function handleInput(e){
         e.preventDefault()   
         setName(e.target.value)
@@ -15,7 +15,11 @@ export default function SearchBar ({setCurrent}){
     }
     function handleSubmit(e){
         e.preventDefault()
-        dispatch(searchByName(name))
+        if(name.length){
+            dispatch(searchByName(name))
+        }else {
+            alert('Enter a word before searching...')
+        }
         setName("")
         setCurrent(1)
     }
