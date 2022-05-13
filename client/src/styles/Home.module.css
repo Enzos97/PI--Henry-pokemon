@@ -273,7 +273,7 @@
     background-color: rgb(144,238,144);
     border: 1px solid black;
     width: 100%;
-    height: 18rem;
+    height: 20rem;
     margin-top: 0.5rem;
     border-radius: 1rem;
     justify-content: center;
@@ -289,11 +289,16 @@
     height: 3rem;
     align-content: center;
     align-items: center;
+    margin-top: 0.5rem;
 }
 .divSelector{
+    margin-top: 0.5rem;
     display: flex;
     flex-direction: column;
-    height: 15rem;
+    height: 16rem;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }
 .labels{
     display: flex;
