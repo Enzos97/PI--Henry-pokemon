@@ -15,7 +15,7 @@ export default function SearchBar ({setCurrent}){
     }
     function handleSubmit(e){
         e.preventDefault()
-        if(name.length){
+        if(name.length!==0){
             dispatch(searchByName(name))
         }else {
             alert('Enter a word before searching...')
