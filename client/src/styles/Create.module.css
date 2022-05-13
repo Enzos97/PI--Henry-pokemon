@@ -131,7 +131,7 @@
     .div0{
         display: flex;
         width: 100vw;
-        height: 60rem;
+        height: 80rem;
         background: url('../img/createdres.jpg');
         background-size: 100vw 100vh;
         flex-direction: column;  
