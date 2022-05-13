@@ -26,7 +26,7 @@ return(
             <div className={style.div1}>
                     <h1 className={style.h1}>{characterDetail.name.toUpperCase()}</h1>
                 <div className={style.div2}>
-                    <img src={characterDetail.img?characterDetail.img:dinoErr} alt="" width="150em" height="200em" />
+                    <img src={characterDetail.img?characterDetail.img:dinoErr} alt="" width="150em" height="200em" className={style.img}/>
                     <div className={style.div3}>
                         <p>Hp: {characterDetail.hp}</p>
                         <p>Attack: {characterDetail.attack}</p>

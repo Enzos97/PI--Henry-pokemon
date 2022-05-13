@@ -110,13 +110,13 @@ export default function Home(){
                     </div>
                 </div>
             </div>
-                <div className={style.paginatedYCard}>
                     <Paginated
                         charactersPerPage= {charactersPerPage}
                         allCharacters={allCharacters.length}
                         paginated= {paginated}
                         numOfPage={numOfPage}
                         />
+                <div className={style.paginatedYCard}>
                     <div className={style.card}>
                     {
                         currentCharacters.length!==0?currentCharacters.map(m=>{
@@ -132,13 +132,13 @@ export default function Home(){
                         </div>
                     }
                     </div>
+                </div>
                     <Paginated
                         charactersPerPage= {charactersPerPage}
                         allCharacters={allCharacters.length}
                         paginated= {paginated}
                         numOfPage={numOfPage}
                     />
-                </div>
             </div>
     )
 }

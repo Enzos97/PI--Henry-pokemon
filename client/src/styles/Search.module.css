@@ -1,0 +1,9 @@
+@media only screen and (max-width: 600px){
+    .input{
+        height: 2rem;    
+    }
+    .btn{
+        height:2.5rem;
+        width: 6rem;
+    }
+}

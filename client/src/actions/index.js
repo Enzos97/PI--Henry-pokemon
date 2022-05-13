@@ -13,7 +13,7 @@ export const CLEAR_PAGE = 'CLEAR_PAGE'
 
 export function getCharacters(){
     return async function(dispach){
-        let json = await axios.get("http://localhost:3001/api/pokemons")
+        let json = await axios.get("https://pokemonsbyenzo.herokuapp.com/api/pokemons")
         return dispach({
             type: 'GET_CHARACTERS',
             payload: json.data
@@ -22,7 +22,7 @@ export function getCharacters(){
 }
 export function getDetail(id){
     return (dispatch)=>{
-            axios.get(`http://localhost:3001/api/pokemons/${id}`)
+            axios.get(`https://pokemonsbyenzo.herokuapp.com/api/pokemons/${id}`)
                 .then((json) => dispatch({type: 'GET_DETAIL', payload:json.data}))
                 .catch((err)=>{window.alert(err.response.data)})
     }
@@ -30,7 +30,7 @@ export function getDetail(id){
 export function getTypes(){
     return async function(dispatch){
         try{
-            let json = await axios.get('http://localhost:3001/api/types')
+            let json = await axios.get('https://pokemonsbyenzo.herokuapp.com/api/types')
             return dispatch({
                 type: 'GET_TYPES',
                 payload: json.data
@@ -42,7 +42,7 @@ export function getTypes(){
 }
 export function postPokemon(payload){
     return function(dispatch){
-            axios.post('http://localhost:3001/api/pokemons/',payload)
+            axios.post('https://pokemonsbyenzo.herokuapp.com/api/pokemons',payload)
             .then((json)=>dispatch({type:'POST_POKEMON', payload:json}))
             .catch((err)=>{window.alert(err.response.data)})
     }
@@ -75,7 +75,7 @@ export function filterCrated(payload){
 export function searchByName(name){
     return async function(dispatch){
         try{
-            let json = await axios.get(`http://localhost:3001/api/pokemons?name=${name}`)
+            let json = await axios.get(`https://pokemonsbyenzo.herokuapp.com/api/pokemons?name=${name}`)
             let arr=[]
             arr.push(json.data)
             return dispatch({

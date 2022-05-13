@@ -54,3 +54,61 @@
     color: white;
     border: 2.5px solid white;
 }
+@media only screen and (max-width: 600px){
+    .div{
+        display: flex;
+        width:100vw;
+        height:100vh; 
+        background: url(../img/pikachulanding.jpg);
+        background-repeat: repeat;
+        background-size: 100vw 90vh;    
+        flex-direction: column;  
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        align-content: center;
+    }
+    .h1{
+        margin-bottom: 1rem;
+        color: black;
+        text-shadow: 1px 0 0 #fff, -1px 0 0 #fff,
+       0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px 0 #fff, -1px -1px 0 #fff,
+       -1px 1px 0 #fff, 1px -1px 0 #fff;
+    }
+    .btn{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+    .btn:hover{
+        transition: 0.4s;
+        text-decoration: none;
+        background-color: #5dc1cf;
+        border: transparent ;
+        text-shadow: 1px 0 0 #fff, -1px 0 0 #fff,
+        0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px 0 #fff, -1px -1px 0 #fff,
+        -1px 1px 0 #fff, 1px -1px 0 #fff;
+    }
+    .link{
+        display: flex;
+        width: 8rem;
+        height: 2rem;
+        background-color: rgb(144,238,144);
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        align-content: center;
+        border: 2px solid black ;
+        text-decoration: none;
+        border-radius: 0.4rem;
+        margin-top: 0.4rem;
+        margin-bottom: 20rem;
+    }
+    .link:hover{
+        transition: 0.4s;
+        text-decoration: none;
+        background-color: #5dc1cf;
+        color: white;
+        border: 2.5px solid white;
+    }
+}

@@ -136,7 +136,7 @@ export default function CreatePokemon(){
                     <img className={style.img} src={newg} alt="" />
                 </div>
                 <div className={style.div2}>
-                    <div>
+                    <div className={style.labelsInputs}>
                         <label>Name: </label>
                         <input 
                             type="text" 
@@ -148,7 +148,7 @@ export default function CreatePokemon(){
                         )}
 
                     </div>
-                    <div>
+                    <div className={style.labelsInputs}>
                         <label>Hp: </label>
                         <input 
                             type="number" 
@@ -161,7 +161,7 @@ export default function CreatePokemon(){
                             <p className={style.error}>{errors.hp}</p>
                         )}
                     </div>
-                    <div>
+                    <div className={style.labelsInputs}>
                         <label>Attack: </label>
                         <input 
                             type="number" 
@@ -174,7 +174,7 @@ export default function CreatePokemon(){
                             <p className={style.error}>{errors.attack}</p>
                         )}
                     </div>
-                    <div>
+                    <div className={style.labelsInputs}>
                         <label>Defense: </label>
                         <input 
                             type="number" 
@@ -187,7 +187,7 @@ export default function CreatePokemon(){
                             <p className={style.error}>{errors.defense}</p>
                         )}
                     </div>
-                    <div>
+                    <div className={style.labelsInputs}>
                         <label>Speed: </label>
                         <input 
                             type="number" 
@@ -200,7 +200,7 @@ export default function CreatePokemon(){
                             <p className={style.error}>{errors.speed}</p>
                         )}
                     </div>
-                    <div>
+                    <div className={style.labelsInputs}>
                         <label>Weight: </label>
                         <input 
                             type="number" 
@@ -213,7 +213,7 @@ export default function CreatePokemon(){
                             <p className={style.error}>{errors.weight}</p>
                         )}
                     </div>
-                    <div>
+                    <div className={style.labelsInputs}>
                         <label>Height: </label>
                         <input 
                             type="number" 
@@ -231,7 +231,7 @@ export default function CreatePokemon(){
                             <div className={style.checkBox}>
                             {types.map((t)=>{
                                 return(
-                                        <label><input type="checkbox" value={t.name} name={t.name} onChange={(e)=>handleCheck(e)} />{t.name}</label>
+                                        <label className={style.labelChek2}><input type="checkbox" value={t.name} name={t.name} onChange={(e)=>handleCheck(e)} />{t.name}</label>
                                         )
                             })}
                             </div>
@@ -239,7 +239,7 @@ export default function CreatePokemon(){
                                 <p className={style.error}>{errors.types}</p>
                         )}
                     </div>
-                    <div>
+                    <div className={style.labelsInputs}>
                         <label>Img: </label>
                         <input type="text" 
                             value={input.img} 
@@ -251,7 +251,7 @@ export default function CreatePokemon(){
                             <p className={style.error}>{errors.img}</p>
                         )}
                     </div>
-                    <button type="submit">create</button>
+                    <button className={style.btn2} type="submit">create</button>
                 </div>
             </form>
         </div>
