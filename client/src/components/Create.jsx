@@ -63,8 +63,11 @@ export default function CreatePokemon(){
         if (input.types.length < 1){
              errors.types = 'You must choose at least one type...'
         }
-        if(input.img.length&&!ReUrl.test(input.img)){
-            errors.img = 'Enter a valid url'
+        // if(input.img.length&&!ReUrl.test(input.img)){
+        //     errors.img = 'Enter a valid url'
+        // }
+        if(input.img.length&&input.img.length){
+            errors.img = 'The function of adding image has been temporarily disabled...'
         }
         return errors
     }
