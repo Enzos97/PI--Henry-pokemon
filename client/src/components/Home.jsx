@@ -25,7 +25,7 @@ export default function Home(){
         dispatch(getCharacters());
         dispatch(getTypes())
         //eslint-disable-next-line
-    },[])
+    },[dispatch])
     const paginated = (pageNumber)=>{
         setCurrent(pageNumber)
     }
