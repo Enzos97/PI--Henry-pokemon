@@ -25,6 +25,9 @@ return(
             Object.keys(characterDetail).length!==0?
             <div className={style.div1}>
                     <h1 className={style.h1}>{characterDetail.name.toUpperCase()}</h1>
+                <div>
+                    {characterDetail.InDB?<button>x</button>:null}
+                </div>
                 <div className={style.div2}>
                     <img src={characterDetail.img?characterDetail.img:dinoErr} alt="" width="150em" height="200em" className={style.img}/>
                     <div className={style.div3}>
@@ -36,9 +39,6 @@ return(
                         <p>Height: {characterDetail.height}</p>
                         <p>Types: {characterDetail.types.map(m=>m[0].toUpperCase()+m.slice(1)+' ')}</p>
                     </div>
-                </div>
-                <div>
-                    {characterDetail.InDB?<button>x</button>:null}
                 </div>
             </div>:
             <div>
