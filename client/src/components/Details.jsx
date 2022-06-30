@@ -24,9 +24,9 @@ return(
         {
             Object.keys(characterDetail).length!==0?
             <div className={style.div1}>
+                {characterDetail.InDB?<button>x</button>:null}
                 <div className={style.div105}>
                     <h1 className={style.h1}>{characterDetail.name.toUpperCase()}</h1>
-                    {characterDetail.InDB?<button>x</button>:null}
                 </div>
                 <div className={style.div2}>
                     <img src={characterDetail.img?characterDetail.img:dinoErr} alt="" width="150em" height="200em" className={style.img}/>
