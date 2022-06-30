@@ -12,7 +12,7 @@
 }
 .h1{
     display: block;
-    margin-bottom: 3rem;
+    /* margin-bottom: 3rem; */
 }
 .div1{
     display: flex;
