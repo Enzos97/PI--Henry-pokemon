@@ -33,6 +33,7 @@
     display: flex;
     align-items: center;
     align-content: center;
+    justify-content: center;
 }
 .div2{
     display: flex;
