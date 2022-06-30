@@ -37,6 +37,9 @@ return(
                         <p>Types: {characterDetail.types.map(m=>m[0].toUpperCase()+m.slice(1)+' ')}</p>
                     </div>
                 </div>
+                <div>
+                    {characterDetail.InDB?<button>x</button>:null}
+                </div>
             </div>:
             <div>
                 <img src={loadingGif} alt="" />
