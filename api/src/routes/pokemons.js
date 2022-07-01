@@ -33,7 +33,7 @@ router.post('/',async(req,res)=>{
 })
 router.delete('/:id',async(req,res)=>{
     try{
-        let {id}= req.body
+        let {id}= req.params;
         await Pokemon.destroy({
             where:{id}
         })

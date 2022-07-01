@@ -98,6 +98,7 @@ export function deletePokemonDb(id){
                 payload:json
             })
         }catch(error){
+            window.alert(error.response.data)
         }
     }
 }

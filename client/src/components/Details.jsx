@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearPage, deletePokemonDb, getDetail} from "../actions";
 import { useEffect } from "react";
@@ -20,9 +20,11 @@ useEffect(()=>{
 // useEffect(()=>{
 //     dispatch(deletePokemonDb())
 // })
+const navigate = useNavigate();
 const characterDetail = useSelector((state)=>state.detail)
 const handleClick=(e)=>{
     dispatch(deletePokemonDb(characterDetail.id))
+    navigate('/home')
 }
 return(
     <div className={style.div}>
