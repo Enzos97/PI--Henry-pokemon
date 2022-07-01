@@ -146,7 +146,6 @@ async function createCharacter(name,height,hp,attack,defense,speed,weight,types,
         })
         
         pokemonCreate.addType(typesDb)
-        
         return 'Pokemon created successfully'
     }
     }else{

@@ -1,4 +1,5 @@
 const { Router, json } = require('express')
+const {Pokemon} = require('../db.js')
 const router= Router()
 const {getallCharacters, charactersById, createCharacter, charactersByNameInDbOrApi}= require('../controllers/controlls')
 router.use(json())
@@ -30,5 +31,15 @@ router.post('/',async(req,res)=>{
         res.status(400).json(err.message)
     }
 })
-
+router.delete('/:id',async(req,res)=>{
+    try{
+        let {id}= req.body
+        await Pokemon.destroy({
+            where:{id}
+        })
+        res.status(201).json('pokemons deleted')
+    }catch(err){
+        res.status(418).json(err.message)
+    }
+})
 module.exports = router 
