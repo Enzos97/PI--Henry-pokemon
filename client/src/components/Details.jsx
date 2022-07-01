@@ -23,7 +23,9 @@ useEffect(()=>{
 const history=useHistory()
 const characterDetail = useSelector((state)=>state.detail)
 const handleClick=(e)=>{
+    e.preventDefault();
     dispatch(deletePokemonDb(characterDetail.id));
+    alert('pokemon successfully eliminated')
     history.push('/home')
 }
 return(
