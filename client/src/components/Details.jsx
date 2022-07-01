@@ -23,8 +23,8 @@ useEffect(()=>{
 const navigate = useNavigate();
 const characterDetail = useSelector((state)=>state.detail)
 const handleClick=(e)=>{
-    dispatch(deletePokemonDb(characterDetail.id))
-    navigate('/home')
+    dispatch(deletePokemonDb(characterDetail.id));
+    navigate('/home');
 }
 return(
     <div className={style.div}>
