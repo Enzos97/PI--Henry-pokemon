@@ -23,10 +23,15 @@ useEffect(()=>{
 const history=useHistory()
 const characterDetail = useSelector((state)=>state.detail)
 const handleClick=(e)=>{
-    e.preventDefault();
-    dispatch(deletePokemonDb(characterDetail.id));
-    alert('pokemon successfully eliminated')
-    history.push('/home')
+        let text = "Do you want to eliminate this Pokemon?"
+        if (window.confirm(text) == true) {
+            //eslint-disable-line
+            dispatch(deletePokemonDb(characterDetail.id));
+            alert('pokemon successfully eliminated')
+            history.push('/home')
+          } else {
+            return null
+          }
 }
 return(
     <div className={style.div}>
@@ -34,7 +39,7 @@ return(
         {
             Object.keys(characterDetail).length!==0?
             <div className={style.div1}>
-                {characterDetail.InDB?<button onClick={handleClick}>x</button>:null}
+                {characterDetail.InDB?<button onClick={handleClick} className={style.btnx}>x</button>:null}
                 <div className={style.div105}>
                     <h1 className={style.h1}>{characterDetail.name.toUpperCase()}</h1>
                 </div>
