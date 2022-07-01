@@ -1,4 +1,4 @@
-import {GET_CHARACTERS, FILTER, GET_DETAIL, FILTER_CREATED, ORDER_NAME, SEARCH_BY_NAME, ORDER_ATTACK, POST_POKEMON, CLEAR_PAGE} from "../actions"
+import {GET_CHARACTERS, FILTER, GET_DETAIL, FILTER_CREATED, ORDER_NAME, SEARCH_BY_NAME, ORDER_ATTACK, POST_POKEMON, CLEAR_PAGE, DELETE_POKEMON} from "../actions"
 import { GET_TYPES,  } from './../actions/index';
 
 const initialState = {
@@ -77,6 +77,9 @@ const rootReducer = (state= initialState,action)=>{
         case CLEAR_PAGE: return{
             ...state,
             detail:{}
+        }
+        case DELETE_POKEMON: return{
+            ...state
         }
         // case GET_TYPES_IN_PAGE: return{
         //     ...state,

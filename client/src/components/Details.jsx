@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { clearPage, getDetail} from "../actions";
+import { clearPage, deletePokemonDb, getDetail} from "../actions";
 import { useEffect } from "react";
 import style from '../styles/Details.module.css'
 import loadingGif from '../img/pikachu.gif'
@@ -17,14 +17,20 @@ useEffect(()=>{
     })
     //eslint-disable-next-line
 },[dispatch])
+// useEffect(()=>{
+//     dispatch(deletePokemonDb())
+// })
 const characterDetail = useSelector((state)=>state.detail)
+const handleClick=(e)=>{
+    dispatch(deletePokemonDb(characterDetail.id))
+}
 return(
     <div className={style.div}>
         <Link className={style.link} to='/home'><button className={style.btn}>POKEMONS</button></Link>
         {
             Object.keys(characterDetail).length!==0?
             <div className={style.div1}>
-                {characterDetail.InDB?<button>x</button>:null}
+                {characterDetail.InDB?<button onClick={handleClick}>x</button>:null}
                 <div className={style.div105}>
                     <h1 className={style.h1}>{characterDetail.name.toUpperCase()}</h1>
                 </div>

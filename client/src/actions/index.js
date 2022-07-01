@@ -9,6 +9,7 @@ export const SEARCH_BY_NAME = 'SEARCH_BY_NAME'
 export const ORDER_ATTACK = 'ORDER_ATTACK'
 export const POST_POKEMON = 'POST_POKEMON'
 export const CLEAR_PAGE = 'CLEAR_PAGE'
+export const DELETE_POKEMON = 'DELETE_POKEMON'
 
 
 export function getCharacters(){
@@ -84,6 +85,19 @@ export function searchByName(name){
             })
         }catch(err){
             window.alert(err.response.data)
+        }
+    }
+}
+
+export function deletePokemonDb(id){
+    return async function(dispatch){
+        try{
+            let json = await axios.delete(`https://pokemonsbyenzo.herokuapp.com/api/pokemons/${id}`)
+            return dispatch({
+                type: 'DELETE_POKEMON',
+                payload:json
+            })
+        }catch(error){
         }
     }
 }
