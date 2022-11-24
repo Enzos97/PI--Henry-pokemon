@@ -165,6 +165,7 @@ async function bullTypeInDb(){
     }
     return typeInDb
 }
+//sumo prueba
 // let llamadoALaApi = await axios.get('https://pokeapi.co/api/v2/type');
 // var typeInDb=[];
 // for (let pokemonT = 0; pokemonT < llamadoALaApi.data.results.length; pokemonT++) {
